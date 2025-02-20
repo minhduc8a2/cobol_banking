@@ -35,6 +35,7 @@
            OPEN INPUT CSV-FILE.
       *    Ignore first line
            READ CSV-FILE INTO CSV-RECORD 
+           END-READ.
       *    /////
            OPEN OUTPUT USER-DB-FILE.
            PERFORM UNTIL EOF = 1
@@ -47,7 +48,7 @@
                        MOVE WS-NAME TO REC-NAME
                        MOVE WS-DOB TO REC-DOB
                        WRITE USER-DB-RECORD    
-                   
+                END-READ    
            END-PERFORM.
            CLOSE USER-DB-FILE.
            CLOSE CSV-FILE.

@@ -36,7 +36,7 @@
                        DISPLAY "Invalid Choice"
                END-EVALUATE
            END-PERFORM.
-           STOP RUN.
+           
 
       
       

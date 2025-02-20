@@ -33,6 +33,7 @@
            OPEN INPUT CSV-FILE.
       *    Ignore first line
            READ CSV-FILE INTO CSV-RECORD 
+           END-READ.
       *    /////
            OPEN OUTPUT BALANCE-DB-FILE.
            PERFORM UNTIL EOF = 1

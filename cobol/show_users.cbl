@@ -48,8 +48,13 @@
            PERFORM UNTIL USER-DB-FILE-STATUS = "10" 
                READ USER-DB-FILE NEXT RECORD
                    AT END MOVE "10" TO USER-DB-FILE-STATUS
-                   NOT AT END DISPLAY "👤 User ID: " USER-REC-ID
+                   NOT AT END 
+                   MOVE USER-REC-ID TO BALANCE-REC-ID
+                   READ BALANCE-DB-FILE KEY IS BALANCE-REC-ID
+                   NOT INVALID KEY
+                   DISPLAY "👤 User ID: " USER-REC-ID
                               " 📛 Name: " USER-REC-NAME
                               " 📅 DOB: " USER-REC-DOB
+                              " 💰 Balance: " BALANCE-REC-BALANCE
            END-PERFORM.
            PERFORM CLOSE-FILES.
