@@ -10,4 +10,4 @@ At folder "cobol", open Ubuntu Terminal
 >You need to initialize the database when running the program for the first time!
 >You need to initialize the database when running the program for the first time!
 >You need to initialize the database when running the program for the first time!
-![Database Initialization](images/UI.png)
+![Database Initialization](UI.png)
