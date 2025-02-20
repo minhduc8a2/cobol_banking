@@ -1,8 +1,9 @@
 #!/bin/bash
 
 echo "🔄 Compiling COBOL modules..."
-cobc -m read_balance.cbl
-cobc -m read_user.cbl
+cobc -m create_db_files.cbl
+cobc -m import_balance_csv.cbl
+cobc -m import_user_csv.cbl
 cobc -m show_users.cbl
 cobc -m find_max_id.cbl
 cobc -m add_user.cbl

@@ -58,5 +58,6 @@
                                  " 📛 Name: " USER-REC-NAME
                                  " 📅 DOB: " USER-REC-DOB
                                  " 💰 Balance: " BALANCE-REC-BALANCE
-           
+                 END-READ
+           END-READ
            PERFORM CLOSE-FILES.

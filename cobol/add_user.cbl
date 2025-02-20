@@ -44,7 +44,7 @@
             CLOSE BALANCE-DB-FILE.
             CLOSE USER-DB-FILE.
        ADD-USER.
-           PERFORM OPEN-FILES.
+           
            PERFORM UNTIL EXIT-ADD-USER <> "Y" AND EXIT-ADD-USER <> "y"
                 DISPLAY "Enter User Name: "
                 ACCEPT USER-REC-NAME
@@ -55,12 +55,16 @@
 
                 CALL "FIND_MAX_ID" USING USER-REC-ID
                 MOVE USER-REC-ID TO BALANCE-REC-ID
+                PERFORM OPEN-FILES
                 WRITE USER-DB-RECORD
+                END-WRITE
                 WRITE BALANCE-DB-RECORD
+                END-WRITE
+                PERFORM CLOSE-FILES
                 DISPLAY "User ID: " USER-REC-ID
                 DISPLAY "BALANCE ID: " BALANCE-REC-ID
                 DISPLAY "User added successfully."
                 DISPLAY "Do you want to add another user? (Y/N)"
                 ACCEPT EXIT-ADD-USER
            END-PERFORM.
-           PERFORM CLOSE-FILES.
+           

@@ -71,16 +71,21 @@
                                 DISPLAY "Enter new name: "
                                 ACCEPT USER-REC-NAME
                                 REWRITE USER-DB-RECORD
+                                END-REWRITE
 
                             WHEN CHOICE = 2
                                 DISPLAY "Enter new DOB: "
                                 ACCEPT USER-REC-DOB
                                 REWRITE USER-DB-RECORD
+                                END-REWRITE
+
 
                             WHEN CHOICE = 3
                                 DISPLAY "Enter new balance: "
                                 ACCEPT BALANCE-REC-BALANCE
-                                REWRITE BALANCE-DB-RECORD   
+                                REWRITE BALANCE-DB-RECORD 
+                                END-REWRITE
+
                             WHEN CHOICE = 4
                                 MOVE 4 TO CHOICE
                             WHEN OTHER
@@ -92,5 +97,6 @@
                                  " 📛 Name: " USER-REC-NAME
                                  " 📅 DOB: " USER-REC-DOB
                                  " 💰 Balance: " BALANCE-REC-BALANCE
-           
+                   END-READ
+           END-READ
            PERFORM CLOSE-FILES.

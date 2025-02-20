@@ -21,6 +21,7 @@
 
        WORKING-STORAGE SECTION.
        01 USER-FILE-STATUS PIC X(2).
+       01 WS-FOUND-RECORD PIC 9 VALUE 0.
        LINKAGE SECTION.
        01 MAX-ID PIC 9(10) VALUE 0.
 
@@ -38,9 +39,16 @@
                READ USER-DB-FILE NEXT RECORD
                    AT END EXIT PERFORM
                    NOT AT END
+                       MOVE 1 TO WS-FOUND-RECORD
                        IF USER-REC-ID > MAX-ID
                            MOVE USER-REC-ID TO MAX-ID
                        END-IF
+                END-READ
            END-PERFORM.
-           COMPUTE MAX-ID = MAX-ID + 1.
+           IF WS-FOUND-RECORD = 0 THEN
+               MOVE 1 TO MAX-ID
+           ELSE
+               COMPUTE MAX-ID = MAX-ID + 1
+           END-IF.
+           DISPLAY "MAX_ID" MAX-ID
            PERFORM CLOSE-FILES.
