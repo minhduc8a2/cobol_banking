@@ -1,1 +1,5 @@
 */venv/
+**/balance.db
+**/user.db
+**/read_balance
+**/read_user
