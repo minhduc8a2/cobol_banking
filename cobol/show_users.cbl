@@ -35,7 +35,7 @@
 
        PROCEDURE DIVISION.
            PERFORM SHOW-USERS.
-           STOP RUN.
+           GOBACK.
 
        OPEN-FILES.
             OPEN INPUT USER-DB-FILE.
