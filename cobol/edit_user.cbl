@@ -87,7 +87,7 @@
                                 DISPLAY "Invalid Choice"
                             END-EVALUATE
                       END-PERFORM 
-                      DISPLAY "User updated successfully!"
+                      DISPLAY "✅User updated successfully!"
                       DISPLAY "👤 User ID: " USER-REC-ID
                                  " 📛 Name: " USER-REC-NAME
                                  " 📅 DOB: " USER-REC-DOB
