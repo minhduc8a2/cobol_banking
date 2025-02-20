@@ -26,8 +26,6 @@
        01 WS-NAME       PIC X(50).
        01 WS-DOB        PIC X(10).
 
-      
-
        01  EOF PIC 9 VALUE 0.
 
        PROCEDURE DIVISION.
