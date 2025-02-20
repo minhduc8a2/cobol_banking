@@ -1,5 +1,5 @@
        IDENTIFICATION DIVISION.
-       PROGRAM-ID. ADD_USER.
+       PROGRAM-ID. DELETE_USER.
        
        ENVIRONMENT DIVISION.
        INPUT-OUTPUT SECTION.
@@ -13,6 +13,7 @@
                ACCESS MODE IS RANDOM
                RECORD KEY IS USER-REC-ID.
                
+              
 
        DATA DIVISION.
        FILE SECTION.
@@ -29,12 +30,12 @@
 
        
        WORKING-STORAGE SECTION.
-       01  EXIT-ADD-USER PIC X VALUE 'Y'.
+       01 USER-CONFIRM PIC X.
        
 
 
        PROCEDURE DIVISION.
-           PERFORM ADD-USER.
+           PERFORM DELETE-USER.
            GOBACK.
 
        OPEN-FILES.
@@ -43,24 +44,30 @@
        CLOSE-FILES.
             CLOSE BALANCE-DB-FILE.
             CLOSE USER-DB-FILE.
-       ADD-USER.
+       DELETE-USER.
            PERFORM OPEN-FILES.
-           PERFORM UNTIL EXIT-ADD-USER <> "Y" AND EXIT-ADD-USER <> "y"
-                DISPLAY "Enter User Name: "
-                ACCEPT USER-REC-NAME
-                DISPLAY "Enter User DOB: "
-                ACCEPT USER-REC-DOB
-                DISPLAY "Enter User Balance: "
-                ACCEPT BALANCE-REC-BALANCE
-
-                CALL "FIND_MAX_ID" USING USER-REC-ID
-                MOVE USER-REC-ID TO BALANCE-REC-ID
-                WRITE USER-DB-RECORD
-                WRITE BALANCE-DB-RECORD
-                DISPLAY "User ID: " USER-REC-ID
-                DISPLAY "BALANCE ID: " BALANCE-REC-ID
-                DISPLAY "User added successfully."
-                DISPLAY "Do you want to add another user? (Y/N)"
-                ACCEPT EXIT-ADD-USER
-           END-PERFORM.
+           DISPLAY "Enter User ID: "
+           ACCEPT USER-REC-ID.
+           READ USER-DB-FILE
+            INVALID KEY
+                 DISPLAY "❌User not found."
+            NOT INVALID KEY
+                 MOVE USER-REC-ID TO BALANCE-REC-ID
+                 READ BALANCE-DB-FILE KEY IS BALANCE-REC-ID
+                 NOT INVALID KEY
+                      DISPLAY "👤 User ID: " USER-REC-ID
+                                 " 📛 Name: " USER-REC-NAME
+                                 " 📅 DOB: " USER-REC-DOB
+                                 " 💰 Balance: " BALANCE-REC-BALANCE
+                      DISPLAY 
+                "Are you sure you want to delete this user? (Y/N)"
+                 ACCEPT USER-CONFIRM.
+                IF USER-CONFIRM = "Y" OR "y"
+                    DELETE USER-DB-FILE
+                    DELETE BALANCE-DB-FILE
+                    DISPLAY "User deleted."
+                ELSE
+                    DISPLAY "Cancelled."
+                END-IF
+           
            PERFORM CLOSE-FILES.

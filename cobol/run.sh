@@ -8,6 +8,7 @@ cobc -m find_max_id.cbl
 cobc -m add_user.cbl
 cobc -m find_user.cbl
 cobc -m edit_user.cbl
+cobc -m delete_user.cbl
 
 echo "🚀 Compiling main program..."
 cobc -x main_program.cbl

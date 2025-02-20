@@ -49,7 +49,7 @@
            ACCEPT USER-REC-ID.
            READ USER-DB-FILE
             INVALID KEY
-                 DISPLAY "User not found."
+                 DISPLAY "❌User not found."
             NOT INVALID KEY
                  MOVE USER-REC-ID TO BALANCE-REC-ID
                  READ BALANCE-DB-FILE KEY IS BALANCE-REC-ID
