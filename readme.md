@@ -12,5 +12,6 @@ At folder "cobol"
 3. `cobc -m show_users.cbl`
 4. `cobc -m find_max_id.cbl`
 5. `cobc -m add_user.cbl`
-6. `cobc -x main_program.cbl`
-7. `./main_program`
+6. `cobc -m find_user.cbl`
+7. `cobc -x main_program.cbl`
+8. `./main_program`
