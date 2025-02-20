@@ -9,6 +9,8 @@ At folder "converter"
 At folder "cobol"
 1. `cobc -m read_balance.cbl`
 2. `cobc -m read_user.cbl`
-2. `cobc -m show_users.cbl`
-3. `cobc -x main_program.cbl`
-4. `./main_program`
+3. `cobc -m show_users.cbl`
+4. `cobc -m find_max_id.cbl`
+5. `cobc -m add_user.cbl`
+6. `cobc -x main_program.cbl`
+7. `./main_program`
