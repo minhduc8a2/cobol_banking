@@ -1,5 +1,5 @@
        IDENTIFICATION DIVISION.
-       PROGRAM-ID. ReadCSV.
+       PROGRAM-ID. READ_USER.
 
        ENVIRONMENT DIVISION.
        INPUT-OUTPUT SECTION.
@@ -30,9 +30,12 @@
 
        PROCEDURE DIVISION.
            PERFORM READ-FILE.
-       STOP-RUN.
+           GOBACK.
        READ-FILE.
            OPEN INPUT CSV-FILE.
+      *    Ignore first line
+           READ CSV-FILE INTO CSV-RECORD 
+      *    /////
            OPEN OUTPUT USER-DB-FILE.
            PERFORM UNTIL EOF = 1
                READ CSV-FILE INTO CSV-RECORD

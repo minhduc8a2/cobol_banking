@@ -3,3 +3,7 @@
 **/user.db
 **/read_balance
 **/read_user
+**/show_users
+**/main_program
+**/*.o
+**/*.so
