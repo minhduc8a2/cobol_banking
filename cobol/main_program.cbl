@@ -21,14 +21,16 @@
                        CALL "READ_USER"
                        CALL "READ_BALANCE"
                    WHEN 2
-                       CALL "SHOW_USERS"
+                       CALL "ADD_USER"
                    WHEN 3
-                       CALL "FIND_USER"
+                       CALL "SHOW_USERS"
                    WHEN 4
-                       CALL "EDIT_USER"
+                       CALL "FIND_USER"
                    WHEN 5
-                       CALL "DELETE_USER"
+                       CALL "EDIT_USER"
                    WHEN 6
+                       CALL "DELETE_USER"
+                   WHEN 7
                        MOVE 7 TO CHOICE
                    WHEN OTHER
                        DISPLAY "Invalid Choice"
