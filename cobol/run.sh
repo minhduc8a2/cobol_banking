@@ -2,6 +2,7 @@
 
 echo "🔄 Compiling COBOL modules..."
 cobc -m create_db_files.cbl
+cobc -m clear_database.cbl
 cobc -m import_balance_csv.cbl
 cobc -m import_user_csv.cbl
 cobc -m show_users.cbl

@@ -34,6 +34,10 @@
 
 
        PROCEDURE DIVISION.
+           DISPLAY"-----------------------"
+           DISPLAY "Show users is selected."
+           DISPLAY"-----------------------"
+                       
            PERFORM SHOW-USERS.
            GOBACK.
 

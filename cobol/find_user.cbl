@@ -34,6 +34,9 @@
 
 
        PROCEDURE DIVISION.
+           DISPLAY"----------------------"
+           DISPLAY "Find user is selected."
+           DISPLAY"----------------------"
            PERFORM FIND-USER.
            GOBACK.
 

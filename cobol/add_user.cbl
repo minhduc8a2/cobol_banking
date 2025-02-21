@@ -34,6 +34,9 @@
 
 
        PROCEDURE DIVISION.
+           DISPLAY"----------------------"
+           DISPLAY "Add user is selected."
+           DISPLAY"----------------------"
            PERFORM ADD-USER.
            GOBACK.
 

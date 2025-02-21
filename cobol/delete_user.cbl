@@ -35,6 +35,9 @@
 
 
        PROCEDURE DIVISION.
+           DISPLAY"------------------------"
+           DISPLAY "Delete user is selected."
+           DISPLAY"------------------------"
            PERFORM DELETE-USER.
            GOBACK.
 
