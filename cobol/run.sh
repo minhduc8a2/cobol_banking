@@ -11,9 +11,11 @@ cobc -m -o ADD_USER add_user.cbl
 cobc -m -o FIND_USER find_user.cbl
 cobc -m -o EDIT_USER edit_user.cbl
 cobc -m -o DELETE_USER delete_user.cbl
+cobc -m -o SUM_TOP_N_BALANCE sum_top_n_balance.cbl
+
 
 echo "🚀 Compiling and linking main program with modules..."
-cobc -x -o main_program main_program.cbl CREATE_DB_FILES.o CLEAR_DATABASE.o IMPORT_BALANCE_CSV.o IMPORT_USER_CSV.o SHOW_USERS.o FIND_MAX_ID.o ADD_USER.o FIND_USER.o EDIT_USER.o DELETE_USER.o
+cobc -x -o main_program main_program.cbl CREATE_DB_FILES.o CLEAR_DATABASE.o IMPORT_BALANCE_CSV.o IMPORT_USER_CSV.o SHOW_USERS.o FIND_MAX_ID.o ADD_USER.o FIND_USER.o EDIT_USER.o DELETE_USER.o SUM_TOP_N_BALANCE.o
 
 echo "✅ Compilation and linking complete!"
 
