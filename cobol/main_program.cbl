@@ -20,7 +20,7 @@
                DISPLAY "4. Find user"
                DISPLAY "5. Edit user"
                DISPLAY "6. Delete user"
-               DISPLAY "7. Sum balance"
+               DISPLAY "7. Sum balance in range"
                DISPLAY "8. Exit"
                DISPLAY "Enter your choice: " WITH NO ADVANCING
                ACCEPT CHOICE
@@ -42,7 +42,7 @@
                    WHEN 6
                        CALL "DELETE_USER"
                    WHEN 7
-                       CALL "SUM_BALANCE"
+                       CALL "SUM_TOP_N_BALANCE"
                    WHEN 8
                        MOVE 8 TO CHOICE
                    WHEN OTHER

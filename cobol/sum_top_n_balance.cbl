@@ -1,5 +1,5 @@
        IDENTIFICATION DIVISION.
-       PROGRAM-ID. SUM-TOP-N-BALANCE.
+       PROGRAM-ID. SUM_TOP_N_BALANCE.
 
        ENVIRONMENT DIVISION.
        INPUT-OUTPUT SECTION.
@@ -21,7 +21,7 @@
        01 BALANCE-FILE-STATUS       PIC X(2) VALUE SPACES.
        01 WS-RECORD-COUNT           PIC 9(4) COMP VALUE 0.
        01 WS-N                      PIC 9(4) COMP VALUE 0.
-       01 WS-SUM                    PIC 9(15)V99 VALUE 0.
+       01 WS-SUM                    PIC 9(10)V99 VALUE 0.
 
       * Table to hold up to 1000 balances (adjust as needed)
        01 WS-BALANCE-TABLE.
