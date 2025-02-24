@@ -15,8 +15,9 @@ To set up and run the converter, execute:
 
 #### **🔹 For Linux Users**
 **Requirements:**  
-- Python installed  
-- `python3.10-venv` installed  
+- Python3 installed  
+- `python3.10-venv` installed
+- `python3-pip` installed  
 
 Run the following commands in the **`cobol/converter`** directory:
 
