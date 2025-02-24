@@ -88,6 +88,7 @@
                END-IF.
 
        ADD-USER.
+           MOVE "Y" TO EXIT-ADD-USER
            PERFORM UNTIL EXIT-ADD-USER NOT = "Y" AND 
                            EXIT-ADD-USER NOT = "y"
                 DISPLAY "Enter User Name: "
@@ -115,7 +116,7 @@
                    DISPLAY "Enter User Balance: "
                    ACCEPT BALANCE-REC-BALANCE
 
-                   CALL "FIND_MAX_ID" USING USER-REC-ID
+                   CALL "GENERATE_NEW_ID" USING USER-REC-ID
                    MOVE USER-REC-ID TO BALANCE-REC-ID
 
                    PERFORM OPEN-FILES
