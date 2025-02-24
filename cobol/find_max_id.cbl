@@ -16,7 +16,7 @@
        FD USER-DB-FILE.
        01 USER-DB-RECORD.
            05 USER-REC-ID PIC 9(10).
-           05 USER-REC-NAME PIC X(50).
+           05 USER-REC-NAME PIC X(30).
            05 USER-REC-DOB PIC X(10).
 
        WORKING-STORAGE SECTION.

@@ -30,25 +30,25 @@
        
        WORKING-STORAGE SECTION.
        01  USER-DB-FILE-STATUS PIC XX.
-       01  PRINT-LINE PIC X(80).
+       01  PRINT-LINE PIC X(100).
        
       * Write Header
        01  USER-DB-HEADER.
            05 FILLER           PIC X(5)    VALUE SPACES.
-           05 FILLER           PIC X(9)    VALUE '👤 User ID'.
-           05 FILLER           PIC X(5)    VALUE SPACES.
+           05 FILLER           PIC X(15)    VALUE '👤 User ID'.
+           05 FILLER           PIC X(2)    VALUE SPACES.
            05 FILLER           PIC X(9)    VALUE '📛 Name'.
-           05 FILLER           PIC X(5)    VALUE SPACES.
+           05 FILLER           PIC X(28)    VALUE SPACES.
            05 FILLER           PIC X(9)    VALUE '📅 DOB'.
-           05 FILLER           PIC X(5)    VALUE SPACES.
-           05 FILLER           PIC X(9)    VALUE '💰 Balance'.
+           05 FILLER           PIC X(8)    VALUE SPACES.
+           05 FILLER           PIC X(15)    VALUE '💰 Balance'.
            05 FILLER           PIC X(5)    VALUE SPACES.
 
        01  USER-DB-ROW.
            05 FILLER           PIC X(5)    VALUE '|'.
            05 DET-USER-REC-ID PIC 9(10).
            05 FILLER           PIC X(5)    VALUE '|'.
-           05 DET-USER-REC-NAME PIC X(50).
+           05 DET-USER-REC-NAME PIC X(30).
            05 FILLER           PIC X(5)    VALUE '|'.
            05 DET-USER-REC-DOB PIC X(10).
            05 FILLER           PIC X(5)    VALUE '|'.
@@ -84,6 +84,7 @@
                    MOVE USER-REC-ID TO BALANCE-REC-ID
                    READ BALANCE-DB-FILE KEY IS BALANCE-REC-ID
                    NOT INVALID KEY
+                   
                    MOVE USER-REC-ID TO DET-USER-REC-ID
                    MOVE USER-REC-NAME TO DET-USER-REC-NAME
                    MOVE USER-REC-DOB TO DET-USER-REC-DOB

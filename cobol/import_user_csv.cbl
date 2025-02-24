@@ -18,12 +18,12 @@
        FD USER-DB-FILE.
        01 USER-DB-RECORD.
            05 REC-ID PIC 9(10).
-           05 REC-NAME PIC X(50).
+           05 REC-NAME PIC X(30).
            05 REC-DOB PIC X(10).
 
        WORKING-STORAGE SECTION.
        01 WS-ID         PIC 9(10).
-       01 WS-NAME       PIC X(50).
+       01 WS-NAME       PIC X(30).
        01 WS-DOB        PIC X(10).
 
        01  EOF PIC 9 VALUE 0.
