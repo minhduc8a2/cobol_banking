@@ -8,7 +8,7 @@
        PROCEDURE DIVISION.
        MAIN-PROGRAM.
            CALL "CREATE_DB_FILES"
-           PERFORM UNTIL CHOICE = 8
+           PERFORM UNTIL CHOICE = 9
                DISPLAY " "
                DISPLAY"----------"
                DISPLAY "MAIN MENU"
@@ -21,7 +21,8 @@
                DISPLAY "5. Edit user"
                DISPLAY "6. Delete user"
                DISPLAY "7. Sum balance in range"
-               DISPLAY "8. Exit"
+               DISPLAY "8. Transferring money between accounts"
+               DISPLAY "9. Exit"
                DISPLAY "Enter your choice: " WITH NO ADVANCING
                ACCEPT CHOICE
                EVALUATE CHOICE
@@ -44,7 +45,9 @@
                    WHEN 7
                        CALL "SUM_TOP_N_BALANCE"
                    WHEN 8
-                       MOVE 8 TO CHOICE
+                       CALL "TRANSFER_MONEY"
+                   WHEN 9
+                       MOVE 9 TO CHOICE
                    WHEN OTHER
                        DISPLAY "Invalid Choice"
                END-EVALUATE
