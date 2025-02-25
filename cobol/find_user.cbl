@@ -50,7 +50,7 @@
            PERFORM OPEN-FILES.
            DISPLAY "Enter User ID: "
            ACCEPT USER-REC-ID.
-           READ USER-DB-FILE
+           READ USER-DB-FILE KEY IS USER-REC-ID
             INVALID KEY
                  DISPLAY "❌User not found."
             NOT INVALID KEY
