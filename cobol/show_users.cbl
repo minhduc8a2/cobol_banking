@@ -52,7 +52,7 @@
            05 FILLER           PIC X(5)    VALUE '|'.
            05 DET-USER-REC-DOB PIC X(10).
            05 FILLER           PIC X(5)    VALUE '|'.
-           05 DET-BALANCE-REC-BALANCE PIC 9(10)V99.
+           05 DET-BALANCE-REC-BALANCE PIC  ZZZZZZZ9.99.
            05 FILLER           PIC X(5)    VALUE '|'.
 
        PROCEDURE DIVISION.
