@@ -1,0 +1,32 @@
+version: "3.7"
+
+services:
+  app:
+    build: .
+    stdin_open: true   # Keep STDIN open for interactive input
+    tty: true          # Allocate a pseudo-TTY for interaction
+    ports:
+      - "8080:8080"
+    networks:
+      - bank-network
+
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: "ngoctan"
+      POSTGRES_PASSWORD: "123"
+      POSTGRES_DB: bank
+    ports:
+      - 5432:5432
+    networks:
+      - bank-network
+    volumes:
+      - postgres-bank-data:/var/lib/postgresql/data
+
+networks:
+  bank-network:
+    driver: bridge
+
+volumes:
+  postgres-bank-data:
+
