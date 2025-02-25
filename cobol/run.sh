@@ -1,17 +1,17 @@
 #!/bin/bash
 
 echo "🔄 Compiling COBOL modules..."
-cobc -m create_db_files.cbl
-cobc -m clear_database.cbl
-cobc -m import_balance_csv.cbl
-cobc -m import_user_csv.cbl
-cobc -m show_users.cbl
-cobc -m generate_new_id.cbl
-cobc -m add_user.cbl
-cobc -m find_user.cbl
-cobc -m edit_user.cbl
-cobc -m delete_user.cbl
-cobc -m sum_top_n_balance.cbl
+cobc -m create_db_files.cbl -o CREATE_DB_FILES.so
+cobc -m clear_database.cbl -o CLEAR_DATABES.so
+cobc -m import_balance_csv.cbl -o IMPOORT_BALANCE_CSV.so
+cobc -m import_user_csv.cbl -o IMPORT_USER_CSV.so
+cobc -m show_users.cbl -o SHOW_USERS.so
+cobc -m generate_new_id.cbl -o GENERATE_NEW_ID.so
+cobc -m add_user.cbl -o ADD_USER.so
+cobc -m find_user.cbl -o FIND_USER.so
+cobc -m edit_user.cbl -o EDIT_USER.so
+cobc -m delete_user.cbl -o DELETE_USER.so
+cobc -m sum_top_n_balance.cbl -o SUM_TOP_N_BALANCE.so
 
 
 echo "🚀 Compiling and linking main program with modules..."
