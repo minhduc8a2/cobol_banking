@@ -49,4 +49,3 @@
            ELSE
                DISPLAY "Cancelled."
            END-IF.
-           

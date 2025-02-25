@@ -48,10 +48,4 @@
                    WHEN OTHER
                        DISPLAY "Invalid Choice"
                END-EVALUATE
-           END-PERFORM.
-      
-              
-
-      
-      
-      
+           END-PERFORM.      
