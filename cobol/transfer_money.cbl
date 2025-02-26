@@ -48,10 +48,21 @@
            
 
            DISPLAY "Who do you want to transfer: "
-           ACCEPT TRANSFER-TO-ID.
+           ACCEPT USER-INPUT.
+           COPY "exit-check.cpy".
+           MOVE FUNCTION NUMVAL(USER-INPUT) TO TRANSFER-TO-ID
+           CALL "SHOW_USER" USING TRANSFER-TO-ID IS-VALID
+           IF IS-VALID=0
+              GOBACK
+           END-IF
+
            DISPLAY "How much money do you want to trasfer?"
            ACCEPT TRANSFER-AMOUNT
-           *> Validation
+           ACCEPT USER-INPUT.
+           COPY "exit-check.cpy".
+           MOVE FUNCTION NUMVAL(USER-INPUT) TO TRANSFER-AMOUNT
+           
+           *> Validation that there is money
            OPEN I-O BALANCE-DB-FILE.
            MOVE WS-USER-ID TO BALANCE-REC-ID
            READ BALANCE-DB-FILE KEY IS BALANCE-REC-ID
@@ -60,14 +71,16 @@
               NOT INVALID KEY
                  IF BALANCE-REC-BALANCE > TRANSFER-AMOUNT
                     MOVE 1 TO DOES-HAVE-THE-MONEY 
-                    COMPUTE BALANCE-REC-BALANCE = BALANCE-REC-BALANCE - TRANSFER-AMOUNT 
-                    REWRITE BALANCE-DB-RECORD
                  END-IF
            END-READ
+
+           *> make the transfer
            IF DOES-HAVE-THE-MONEY = 1
                 MOVE TRANSFER-TO-ID TO BALANCE-REC-ID
                     READ BALANCE-DB-FILE KEY IS BALANCE-REC-ID
                     NOT INVALID
+                          COMPUTE BALANCE-REC-BALANCE = BALANCE-REC-BALANCE - TRANSFER-AMOUNT 
+                          REWRITE BALANCE-DB-RECORD
                           COMPUTE BALANCE-REC-BALANCE = BALANCE-REC-BALANCE + TRANSFER-AMOUNT 
                           REWRITE BALANCE-DB-RECORD
                     END-READ
