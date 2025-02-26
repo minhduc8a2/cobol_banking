@@ -25,25 +25,30 @@
 
        WORKING-STORAGE SECTION.
        01 WS-USER-ID             PIC 9(10).
-       01 TRANSFER-TO-ID      PIC 9(10).
-       01 TRANSFER-AMOUNT     PIC 9(10)V99.
-       01 DOES-HAVE-THE-MONEY PIC 9 VALUE 0.
+       01 TRANSFER-TO-ID         PIC 9(10).
+       01 TRANSFER-AMOUNT        PIC 9(10)V99.
+       01 DOES-HAVE-THE-MONEY    PIC 9 VALUE 0.
        01 USER-DB-FILE-STATUS    PIC XX.
        01 BALANCE-DB-FILE-STATUS PIC XX.
-       01 IS-VALID         PIC 9 VALUE 1.
+       01 USER-INPUT             PIC X(30).       01 IS-VALID         PIC 9 VALUE 1.
 
        PROCEDURE DIVISION.
            DISPLAY "----------------------------"
            DISPLAY "Transfer money is selected."
            DISPLAY "----------------------------"
-
+           
            DISPLAY "Enter User ID: "
-           ACCEPT WS-USER-ID.
+           ACCEPT USER-INPUT.
+           COPY "exit-check.cpy".
+           MOVE FUNCTION NUMVAL(USER-INPUT) TO WS-USER-ID
            CALL "SHOW_USER" USING WS-USER-ID IS-VALID
-           DISPLAY "Who do yu want to transfer: "
+           IF IS-VALID=0
+              GOBACK
+           END-IF
+           
+
+           DISPLAY "Who do you want to transfer: "
            ACCEPT TRANSFER-TO-ID.
-           CALL "SHOW_USER" USING TRANSFER-TO-ID IS-VALID
-           *> how much money do you want to trasfer
            DISPLAY "How much money do you want to trasfer?"
            ACCEPT TRANSFER-AMOUNT
            *> Validation
