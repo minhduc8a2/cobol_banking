@@ -13,6 +13,8 @@ cobc -m edit_user.cbl -o EDIT_USER.so
 cobc -m delete_user.cbl -o DELETE_USER.so
 cobc -m sum_top_n_balance.cbl -o SUM_TOP_N_BALANCE.so
 cobc -m transfer_money.cbl -o TRANSFER_MONEY.so
+cobc -m show_user.cbl -o SHOW_USER.so
+
 
 echo "🚀 Compiling and linking main program with modules..."
 cobc -x main_program.cbl

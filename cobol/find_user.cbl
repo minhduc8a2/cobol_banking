@@ -25,6 +25,7 @@
        
        WORKING-STORAGE SECTION.
        01  USER-DB-FILE-STATUS PIC XX.
+       01  IS-VALID PIC 9 VALUE 1.
 
 
        PROCEDURE DIVISION.
@@ -33,9 +34,9 @@
               DISPLAY"----------------------"
               DISPLAY "Enter User ID: "
               ACCEPT USER-REC-ID
-           PERFORM SHOW-USER.
+              CALL "SHOW_USER" USING USER-REC-ID IS-VALID 
+
            GOBACK.
 
 
        
-           COPY "show_user.cpy".
