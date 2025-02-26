@@ -30,7 +30,8 @@
        01 DOES-HAVE-THE-MONEY    PIC 9 VALUE 0.
        01 USER-DB-FILE-STATUS    PIC XX.
        01 BALANCE-DB-FILE-STATUS PIC XX.
-       01 USER-INPUT             PIC X(30).       01 IS-VALID         PIC 9 VALUE 1.
+       01 USER-INPUT             PIC X(30).       
+       01 IS-VALID         PIC 9 VALUE 1.
 
        PROCEDURE DIVISION.
            DISPLAY "----------------------------"
