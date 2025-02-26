@@ -43,9 +43,7 @@
            COPY "exit-check.cpy".
            MOVE FUNCTION NUMVAL(USER-INPUT) TO WS-USER-ID
            CALL "SHOW_USER" USING WS-USER-ID IS-VALID
-           IF IS-VALID=0
-              GOBACK
-           END-IF
+           PERFORM IF-NOT-VALID-GOBACK
            
 
            DISPLAY "Who do you want to transfer: "
@@ -53,12 +51,9 @@
            COPY "exit-check.cpy".
            MOVE FUNCTION NUMVAL(USER-INPUT) TO TRANSFER-TO-ID
            CALL "SHOW_USER" USING TRANSFER-TO-ID IS-VALID
-           IF IS-VALID=0
-              GOBACK
-           END-IF
+           PERFORM IF-NOT-VALID-GOBACK
 
            DISPLAY "How much money do you want to trasfer?"
-           ACCEPT TRANSFER-AMOUNT
            ACCEPT USER-INPUT.
            COPY "exit-check.cpy".
            MOVE FUNCTION NUMVAL(USER-INPUT) TO TRANSFER-AMOUNT
@@ -95,3 +90,8 @@
            *> Are you sure?
            *> transfer the money
            GOBACK.
+
+           IF-NOT-VALID-GOBACK.
+              IF IS-VALID=0
+                 GOBACK
+              END-IF.
