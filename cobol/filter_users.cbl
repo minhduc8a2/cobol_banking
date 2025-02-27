@@ -86,10 +86,11 @@
            DISPLAY "Show users is selected."
            DISPLAY "-----------------------"
            PERFORM OPEN-FILES
-           PERFORM WRITE-HEADER
            PERFORM LOAD-USER-TABLE
            PERFORM ASK-SORT-OPTION
            PERFORM SORT-USER-TABLE
+           PERFORM WRITE-HEADER
+
            PERFORM DISPLAY-USER-TABLE
            PERFORM CLOSE-FILES
            GOBACK.
@@ -120,21 +121,30 @@
                    AT END 
                        MOVE "10" TO USER-DB-FILE-STATUS
                    NOT AT END
-                       DISPLAY "User read: " USER-REC-ID " " USER-REC-NAME.
-                       MOVE USER-REC-ID   TO DET-USER-REC-ID OF USER-TABLE-ENTRY(IDX)
-                       MOVE USER-REC-NAME TO DET-USER-REC-NAME OF USER-TABLE-ENTRY(IDX)
-                       MOVE USER-REC-DOB  TO DET-USER-REC-DOB OF USER-TABLE-ENTRY(IDX)
-                       MOVE USER-REC-ID   TO BALANCE-REC-ID.
-                       DISPLAY "Attempting balance READ for key: " BALANCE-REC-ID.
+
+      *                DISPLAY "User read: " USER-REC-ID " " USER-REC-NAME.
+                       MOVE USER-REC-ID   TO DET-USER-REC-ID OF 
+                       USER-TABLE-ENTRY(IDX)
+                       MOVE USER-REC-NAME TO DET-USER-REC-NAME OF 
+                       USER-TABLE-ENTRY(IDX)
+                       MOVE USER-REC-DOB  TO DET-USER-REC-DOB OF 
+                       USER-TABLE-ENTRY(IDX)
+                       MOVE USER-REC-ID   TO BALANCE-REC-ID
+      *                DISPLAY "Attempting balance READ for key: " BALANCE-REC-ID.
                        READ BALANCE-DB-FILE KEY IS BALANCE-REC-ID
                            AT END 
-                               DISPLAY "Balance not found for user " USER-REC-ID.
-                               MOVE ZEROS TO DET-BALANCE-REC-BALANCE OF USER-TABLE-ENTRY(IDX)
+                               DISPLAY "Balance not found for user " 
+                               USER-REC-ID
+                               MOVE ZEROS TO DET-BALANCE-REC-BALANCE OF 
+                               USER-TABLE-ENTRY(IDX)
                            NOT AT END
-                               MOVE BALANCE-REC-BALANCE TO DET-BALANCE-REC-BALANCE OF USER-TABLE-ENTRY(IDX)
-                       END-READ.
-                       ADD 1 TO IDX.
-               END-READ.
+                               MOVE BALANCE-REC-BALANCE TO 
+                               DET-BALANCE-REC-BALANCE OF 
+                               USER-TABLE-ENTRY(IDX)
+                       END-READ
+                       ADD 1 TO IDX
+               END-READ
+
            END-PERFORM.
 
       * Ask the user for sort option.
@@ -170,6 +180,7 @@
                PERFORM UNTIL WS-JDX > 100
                    IF DET-BALANCE-REC-BALANCE OF USER-TABLE-ENTRY(IDX)
                       > DET-BALANCE-REC-BALANCE OF USER-TABLE-ENTRY(WS-JDX)
+
                        PERFORM SWAP-ENTRIES
                    END-IF
                    ADD 1 TO WS-JDX

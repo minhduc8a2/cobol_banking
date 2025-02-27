@@ -33,7 +33,7 @@
        01 WS-I             PIC 9(4) COMP.
        01 WS-J             PIC 9(4) COMP.
        01 WS-TEMP-ID       PIC 9(10).
-       01 WS-TEMP-BAL      PIC 9(10)V99.
+       01 WS-TEMP-BAL      PIC  Z(9)9.99.
 
        PROCEDURE DIVISION.
 
@@ -45,7 +45,7 @@
            PERFORM SORT-TABLE-DESC
            PERFORM SUM-TOP-N
            PERFORM CLOSE-FILES
-           STOP RUN.
+           GOBACK.
 
       *------------------------------
       * Open the balance file
