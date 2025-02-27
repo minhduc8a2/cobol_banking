@@ -12,3 +12,4 @@ cobol/.vscode/settings.json
 .gitignore
 cobol/COPY CODE.TXT
 cobol/.vscode/COPY CODE.TXT
+cobol/bin/fill_users_to_db
