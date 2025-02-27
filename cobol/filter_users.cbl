@@ -86,19 +86,25 @@
            DISPLAY "Show users is selected."
            DISPLAY "-----------------------"
            PERFORM OPEN-FILES
-           
            PERFORM LOAD-USER-TABLE
            PERFORM ASK-SORT-OPTION
            PERFORM SORT-USER-TABLE
            PERFORM WRITE-HEADER
+
            PERFORM DISPLAY-USER-TABLE
            PERFORM CLOSE-FILES
            GOBACK.
 
        OPEN-FILES.
            OPEN INPUT USER-DB-FILE.
+           IF USER-DB-FILE-STATUS NOT = "00"
+               DISPLAY "Error opening user.db - Status: " USER-DB-FILE-STATUS
+           END-IF.
            OPEN INPUT BALANCE-DB-FILE.
-       
+           IF BALANCE-DB-FILE-STATUS NOT = "00"
+               DISPLAY "Error opening balance.db - Status: " BALANCE-DB-FILE-STATUS
+           END-IF.
+
        CLOSE-FILES.
            CLOSE BALANCE-DB-FILE.
            CLOSE USER-DB-FILE.
@@ -115,6 +121,7 @@
                    AT END 
                        MOVE "10" TO USER-DB-FILE-STATUS
                    NOT AT END
+
       *                DISPLAY "User read: " USER-REC-ID " " USER-REC-NAME.
                        MOVE USER-REC-ID   TO DET-USER-REC-ID OF 
                        USER-TABLE-ENTRY(IDX)
@@ -137,6 +144,7 @@
                        END-READ
                        ADD 1 TO IDX
                END-READ
+
            END-PERFORM.
 
       * Ask the user for sort option.
@@ -171,8 +179,8 @@
                ADD 1 TO WS-JDX
                PERFORM UNTIL WS-JDX > 100
                    IF DET-BALANCE-REC-BALANCE OF USER-TABLE-ENTRY(IDX)
-                      > DET-BALANCE-REC-BALANCE OF 
-                      USER-TABLE-ENTRY(WS-JDX)
+                      > DET-BALANCE-REC-BALANCE OF USER-TABLE-ENTRY(WS-JDX)
+
                        PERFORM SWAP-ENTRIES
                    END-IF
                    ADD 1 TO WS-JDX
