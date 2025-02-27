@@ -10,3 +10,4 @@
 **/*.csv
 cobol/.vscode/settings.json
 .gitignore
+cobol/COPY CODE.TXT
