@@ -8,3 +8,5 @@
 **/*.o
 **/*.so
 **/*.csv
+cobol/.vscode/settings.json
+.gitignore
