@@ -31,7 +31,9 @@
        01 USER-DB-FILE-STATUS    PIC XX.
        01 BALANCE-DB-FILE-STATUS PIC XX.
        01 USER-INPUT             PIC X(30).       
-       01 IS-VALID         PIC 9 VALUE 1.
+       01  IS-VALID              PIC 9 VALUE 1.
+           88 1-VALID VALUE 1.
+           88 0-NOT-VALID VALUE 0.
 
        PROCEDURE DIVISION.
            DISPLAY "----------------------------"
@@ -92,6 +94,6 @@
            GOBACK.
 
            IF-NOT-VALID-GOBACK.
-              IF IS-VALID=0
+              IF 0-NOT-VALID
                  GOBACK
               END-IF.
