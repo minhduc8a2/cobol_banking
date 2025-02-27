@@ -86,10 +86,11 @@
            DISPLAY "Show users is selected."
            DISPLAY "-----------------------"
            PERFORM OPEN-FILES
-           PERFORM WRITE-HEADER
+           
            PERFORM LOAD-USER-TABLE
            PERFORM ASK-SORT-OPTION
            PERFORM SORT-USER-TABLE
+           PERFORM WRITE-HEADER
            PERFORM DISPLAY-USER-TABLE
            PERFORM CLOSE-FILES
            GOBACK.
