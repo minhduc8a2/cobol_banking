@@ -23,7 +23,7 @@
 
 
        WORKING-STORAGE SECTION.
-       01   USER-NUM PIC 9(4) VALUE 1.
+       01   USER-NUM USAGE INDEX.
       
        PROCEDURE DIVISION.
            PERFORM ADD-USERS.
