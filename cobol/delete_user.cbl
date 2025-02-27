@@ -57,13 +57,19 @@
             NOT INVALID KEY
                  MOVE USER-REC-ID TO BALANCE-REC-ID
                  READ BALANCE-DB-FILE KEY IS BALANCE-REC-ID
+                     INVALID  KEY
+                            DISPLAY "👤 User ID: " USER-REC-ID
+                                     " 📛 Name: " USER-REC-NAME
+                                     " 📅 DOB: " USER-REC-DOB
+                                     " 💰 Balance: 0" 
                      NOT INVALID KEY
                           DISPLAY "👤 User ID: " USER-REC-ID
                                      " 📛 Name: " USER-REC-NAME
                                      " 📅 DOB: " USER-REC-DOB
                                      " 💰 Balance: " 
                                      BALANCE-REC-BALANCE
-                          DISPLAY 
+                    END-READ      
+                    DISPLAY 
                     "Are you sure you want to delete this user? (Y/N)"
                      ACCEPT USER-CONFIRM.
                     IF USER-CONFIRM = "Y" OR "y"

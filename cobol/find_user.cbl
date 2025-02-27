@@ -17,50 +17,26 @@
        DATA DIVISION.
        FILE SECTION.
        FD USER-DB-FILE.
-       01 USER-DB-RECORD.
-           05 USER-REC-ID PIC 9(10).
-           05 USER-REC-NAME PIC X(30).
-           05 USER-REC-DOB PIC X(10).
+           COPY "user_record.cpy".
            
        FD BALANCE-DB-FILE.
-       01 BALANCE-DB-RECORD.
-           05 BALANCE-REC-ID PIC 9(10).
-           05 BALANCE-REC-BALANCE PIC 9(10)V99.
+           COPY "balance_record.cpy".
 
        
        WORKING-STORAGE SECTION.
        01  USER-DB-FILE-STATUS PIC XX.
-
+       01  IS-VALID PIC 9 VALUE 1.
 
 
        PROCEDURE DIVISION.
-           DISPLAY"----------------------"
-           DISPLAY "Find user is selected."
-           DISPLAY"----------------------"
-           PERFORM FIND-USER.
+              DISPLAY"----------------------"
+              DISPLAY "Find user is selected."
+              DISPLAY"----------------------"
+              DISPLAY "Enter User ID: "
+              ACCEPT USER-REC-ID
+              CALL "SHOW_USER" USING USER-REC-ID IS-VALID 
+
            GOBACK.
 
-       OPEN-FILES.
-            OPEN INPUT USER-DB-FILE.
-            OPEN INPUT BALANCE-DB-FILE.
-       CLOSE-FILES.
-            CLOSE BALANCE-DB-FILE.
-            CLOSE USER-DB-FILE.
-       FIND-USER.
-           PERFORM OPEN-FILES.
-           DISPLAY "Enter User ID: "
-           ACCEPT USER-REC-ID.
-           READ USER-DB-FILE
-            INVALID KEY
-                 DISPLAY "❌User not found."
-            NOT INVALID KEY
-                 MOVE USER-REC-ID TO BALANCE-REC-ID
-                 READ BALANCE-DB-FILE KEY IS BALANCE-REC-ID
-                 NOT INVALID KEY
-                      DISPLAY "👤 User ID: " USER-REC-ID
-                                 " 📛 Name: " USER-REC-NAME
-                                 " 📅 DOB: " USER-REC-DOB
-                                 " 💰 Balance: " BALANCE-REC-BALANCE
-                 END-READ
-           END-READ
-           PERFORM CLOSE-FILES.
+
+       

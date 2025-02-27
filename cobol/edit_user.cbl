@@ -57,6 +57,7 @@
                  MOVE USER-REC-ID TO BALANCE-REC-ID
                  READ BALANCE-DB-FILE KEY IS BALANCE-REC-ID
                  NOT INVALID KEY
+      *             TODO: add validations 
                     DISPLAY "👤 User ID: " USER-REC-ID
                                  " 📛 Name: " USER-REC-NAME
                                  " 📅 DOB: " USER-REC-DOB

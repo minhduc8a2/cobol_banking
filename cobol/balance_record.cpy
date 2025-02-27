@@ -1,0 +1,3 @@
+       01 BALANCE-DB-RECORD.
+           05 BALANCE-REC-ID     PIC 9(10).
+           05 BALANCE-REC-BALANCE PIC 9(10)V99.

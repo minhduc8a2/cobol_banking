@@ -1,3 +1,4 @@
+       >>SOURCE FORMAT FREE
        IDENTIFICATION DIVISION.
        PROGRAM-ID. SHOW_USERS.
        
@@ -32,7 +33,6 @@
        01  USER-DB-FILE-STATUS PIC XX.
        01  PRINT-LINE PIC X(100).
        
-      * Write Header
        01  USER-DB-HEADER.
            05 FILLER           PIC X(5)    VALUE SPACES.
            05 FILLER           PIC X(15)    VALUE '👤 User ID'.
@@ -52,7 +52,7 @@
            05 FILLER           PIC X(5)    VALUE '|'.
            05 DET-USER-REC-DOB PIC X(10).
            05 FILLER           PIC X(5)    VALUE '|'.
-           05 DET-BALANCE-REC-BALANCE PIC 9(10)V99.
+           05 DET-BALANCE-REC-BALANCE PIC  Z(9)9.99.
            05 FILLER           PIC X(5)    VALUE '|'.
 
        PROCEDURE DIVISION.
@@ -83,15 +83,17 @@
                    NOT AT END 
                    MOVE USER-REC-ID TO BALANCE-REC-ID
                    READ BALANCE-DB-FILE KEY IS BALANCE-REC-ID
-                   NOT INVALID KEY
-                   
+                       INVALID KEY 
+                          MOVE 0 TO DET-BALANCE-REC-BALANCE 
+                       NOT INVALID KEY
+                          MOVE BALANCE-REC-BALANCE TO DET-BALANCE-REC-BALANCE
+                   END-READ
                    MOVE USER-REC-ID TO DET-USER-REC-ID
                    MOVE USER-REC-NAME TO DET-USER-REC-NAME
                    MOVE USER-REC-DOB TO DET-USER-REC-DOB
                    MOVE BALANCE-REC-BALANCE TO DET-BALANCE-REC-BALANCE
                    MOVE USER-DB-ROW TO PRINT-LINE
                    DISPLAY PRINT-LINE
-                   END-READ
                 END-READ
            END-PERFORM.
            PERFORM CLOSE-FILES.
