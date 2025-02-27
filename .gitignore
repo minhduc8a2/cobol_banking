@@ -11,3 +11,4 @@
 cobol/.vscode/settings.json
 .gitignore
 cobol/COPY CODE.TXT
+cobol/.vscode/COPY CODE.TXT
